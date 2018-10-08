@@ -11905,7 +11905,8 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="How-to-use-the-Youtube-Data-API:-YoutubeDataApi">How to use the Youtube Data API: YoutubeDataApi<a class="anchor-link" href="#How-to-use-the-Youtube-Data-API:-YoutubeDataApi">&#182;</a></h1><p><a href="">Here is a placeholder to links where this stuff will live</a><br></p>
+<h1 id="How-to-use-the-Youtube-Data-API:-YoutubeDataApi">How to use the Youtube Data API: YoutubeDataApi<a class="anchor-link" href="#How-to-use-the-Youtube-Data-API:-YoutubeDataApi">&#182;</a></h1><p><a href="https://youtube-data-api.readthedocs.io/en/latest/index.html">Youtube Package Documentation</a> <br></p>
+<p><a href="">Here is a placeholder to links where this stuff will live</a><br></p>
 <p>Authors: Megan Brown &amp; Leon Yin <br>
 Presented on: 2018/10/09</p>
 <hr>
@@ -11936,15 +11937,15 @@ Presented on: 2018/10/09</p>
 </li>
 <li><p>What is included in the package:</p>
 <ul>
-<li>video metadata</li>
-<li>channel metadata</li>
-<li>playlist metadata</li>
-<li>subscription metadata</li>
-<li>featured channel metadata</li>
-<li>comment metadata</li>
-<li>captions metadata</li>
-<li>search results</li>
-<li>recommended video results</li>
+<li>video metadata: <a href="https://developers.google.com/youtube/v3/docs/videos/list">api ref</a></li>
+<li>channel metadata: <a href="https://developers.google.com/youtube/v3/docs/channels/list">api ref</a></li>
+<li>playlist metadata: <a href="https://developers.google.com/youtube/v3/docs/playlistItems/list">api ref</a></li>
+<li>subscription metadata: <a href="https://developers.google.com/youtube/v3/docs/subscriptions/list">api ref</a></li>
+<li>featured channel metadata: <a href="https://developers.google.com/youtube/v3/docs/channels/list">api ref</a> </li>
+<li>comment metadata: <a href="https://developers.google.com/youtube/v3/docs/commentThreads/list">api ref</a></li>
+<li>captions metadata: <a href="https://python-pytube.readthedocs.io/en/latest/">api ref</a></li>
+<li>search results: <a href="https://developers.google.com/youtube/v3/docs/search/list">api ref</a></li>
+<li>recommended video results: <a href="https://developers.google.com/youtube/v3/docs/search/list">api ref</a></li>
 </ul>
 </li>
 </ul>
@@ -11954,6 +11955,10 @@ Presented on: 2018/10/09</p>
 <li>The channel id is the internal ID for a given user (ex: <strong>UC3XTzVzaHQEd30rQbuvCtTQ</strong>). You can use this value to get more data about a channel. <br></li>
 </ul>
 <h6 id="But-fear-not,-there-is-a-solution!">But fear not, there is a solution!<a class="anchor-link" href="#But-fear-not,-there-is-a-solution!">&#182;</a></h6><p>Use <code>yt.get_channel_id_from_user(username)</code> to get the channel id for a given user.</p>
+<h3 id="What-is-the-difference-between-a-featured-channel-and-a-subscription?">What is the difference between a featured channel and a subscription?<a class="anchor-link" href="#What-is-the-difference-between-a-featured-channel-and-a-subscription?">&#182;</a></h3><ul>
+<li>A subscription is a channel that a user opts into getting updates for</li>
+<li>A featured channel is a feature a channel can use to direct their viewers towards other channels</li>
+</ul>
 
 </div>
 </div>
@@ -12054,17 +12059,230 @@ Presented on: 2018/10/09</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You can get more information from this channel_id</p>
+<p>You can get more information from this <code>channel_id</code></p>
 
 </div>
 </div>
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">uploads_playlist</span> <span class="o">=</span> <span class="n">get_upload_playlist_id</span><span class="p">(</span><span class="n">channel_id</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">yt</span><span class="o">.</span><span class="n">get_channel_metadata</span><span class="p">(</span><span class="n">channel_id</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[35]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>OrderedDict([(&#39;channel_id&#39;, &#39;UC3XTzVzaHQEd30rQbuvCtTQ&#39;),
+             (&#39;title&#39;, &#39;LastWeekTonight&#39;),
+             (&#39;account_creation_date&#39;,
+              datetime.datetime(2014, 3, 18, 17, 41, 39)),
+             (&#39;keywords&#39;, None),
+             (&#39;description&#39;,
+              &#39;Breaking news on a weekly basis. Sundays at 11PM - only on HBO.\nSubscribe to the Last Week Tonight channel for the latest videos from John Oliver and the LWT team.&#39;),
+             (&#39;view_count&#39;, &#39;1712963061&#39;),
+             (&#39;video_count&#39;, &#39;252&#39;),
+             (&#39;subscription_count&#39;, &#39;6471835&#39;),
+             (&#39;playlist_id_likes&#39;, &#39;LL3XTzVzaHQEd30rQbuvCtTQ&#39;),
+             (&#39;playlist_id_uploads&#39;, &#39;UU3XTzVzaHQEd30rQbuvCtTQ&#39;),
+             (&#39;topic_ids&#39;,
+              &#39;https://en.wikipedia.org/wiki/Entertainment|https://en.wikipedia.org/wiki/Television_program|https://en.wikipedia.org/wiki/Humour&#39;),
+             (&#39;country&#39;, None),
+             (&#39;collection_date&#39;,
+              datetime.datetime(2018, 10, 8, 11, 51, 41, 170828))])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The default paerser returns the items in the JSON as an <code>OrderedDict</code>. Passing <code>parser = None</code> returns the raw JSON.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">yt</span><span class="o">.</span><span class="n">get_channel_metadata</span><span class="p">(</span><span class="n">channel_id</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[49]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;kind&#39;: &#39;youtube#channel&#39;,
+ &#39;etag&#39;: &#39;&#34;XI7nbFXulYBIpL0ayR_gDh3eu1k/SXEcsdWHVw8gnl25pvHqBtGzoHo&#34;&#39;,
+ &#39;id&#39;: &#39;UC3XTzVzaHQEd30rQbuvCtTQ&#39;,
+ &#39;snippet&#39;: {&#39;title&#39;: &#39;LastWeekTonight&#39;,
+  &#39;description&#39;: &#39;Breaking news on a weekly basis. Sundays at 11PM - only on HBO.\nSubscribe to the Last Week Tonight channel for the latest videos from John Oliver and the LWT team.&#39;,
+  &#39;customUrl&#39;: &#39;LastWeekTonight&#39;,
+  &#39;publishedAt&#39;: &#39;2014-03-18T17:41:39.000Z&#39;,
+  &#39;thumbnails&#39;: {&#39;default&#39;: {&#39;url&#39;: &#39;https://yt3.ggpht.com/a-/AN66SAxIEUI6f-101_t2Dy8703mNjD8eikQOVffxBw=s88-mo-c-c0xffffffff-rj-k-no&#39;,
+    &#39;width&#39;: 88,
+    &#39;height&#39;: 88},
+   &#39;medium&#39;: {&#39;url&#39;: &#39;https://yt3.ggpht.com/a-/AN66SAxIEUI6f-101_t2Dy8703mNjD8eikQOVffxBw=s240-mo-c-c0xffffffff-rj-k-no&#39;,
+    &#39;width&#39;: 240,
+    &#39;height&#39;: 240},
+   &#39;high&#39;: {&#39;url&#39;: &#39;https://yt3.ggpht.com/a-/AN66SAxIEUI6f-101_t2Dy8703mNjD8eikQOVffxBw=s800-mo-c-c0xffffffff-rj-k-no&#39;,
+    &#39;width&#39;: 800,
+    &#39;height&#39;: 800}},
+  &#39;localized&#39;: {&#39;title&#39;: &#39;LastWeekTonight&#39;,
+   &#39;description&#39;: &#39;Breaking news on a weekly basis. Sundays at 11PM - only on HBO.\nSubscribe to the Last Week Tonight channel for the latest videos from John Oliver and the LWT team.&#39;}},
+ &#39;contentDetails&#39;: {&#39;relatedPlaylists&#39;: {&#39;likes&#39;: &#39;LL3XTzVzaHQEd30rQbuvCtTQ&#39;,
+   &#39;uploads&#39;: &#39;UU3XTzVzaHQEd30rQbuvCtTQ&#39;,
+   &#39;watchHistory&#39;: &#39;HL&#39;,
+   &#39;watchLater&#39;: &#39;WL&#39;}},
+ &#39;statistics&#39;: {&#39;viewCount&#39;: &#39;1713159810&#39;,
+  &#39;commentCount&#39;: &#39;0&#39;,
+  &#39;subscriberCount&#39;: &#39;6472539&#39;,
+  &#39;hiddenSubscriberCount&#39;: False,
+  &#39;videoCount&#39;: &#39;252&#39;},
+ &#39;topicDetails&#39;: {&#39;topicIds&#39;: [&#39;/m/02jjt&#39;, &#39;/m/0f2f9&#39;, &#39;/m/09kqc&#39;],
+  &#39;topicCategories&#39;: [&#39;https://en.wikipedia.org/wiki/Television_program&#39;,
+   &#39;https://en.wikipedia.org/wiki/Entertainment&#39;,
+   &#39;https://en.wikipedia.org/wiki/Humour&#39;]},
+ &#39;brandingSettings&#39;: {&#39;channel&#39;: {&#39;title&#39;: &#39;LastWeekTonight&#39;,
+   &#39;description&#39;: &#39;Breaking news on a weekly basis. Sundays at 11PM - only on HBO.\nSubscribe to the Last Week Tonight channel for the latest videos from John Oliver and the LWT team.&#39;,
+   &#39;defaultTab&#39;: &#39;Featured&#39;,
+   &#39;showRelatedChannels&#39;: True,
+   &#39;showBrowseView&#39;: True,
+   &#39;featuredChannelsTitle&#39;: &#39;HBO Network Channels&#39;,
+   &#39;featuredChannelsUrls&#39;: [&#39;UCVTQuK2CaWaTgSsoNkn5AiQ&#39;,
+    &#39;UCYbinjMxWwjRpp4WqgDqEDA&#39;,
+    &#39;UCWPQB43yGKEum3eW0P9N_nQ&#39;,
+    &#39;UCbKo3HsaBOPhdRpgzqtRnqA&#39;,
+    &#39;UCy6kyFxaMqGtpE3pQTflK8A&#39;,
+    &#39;UCQzdMyuz0Lf4zo4uGcEujFw&#39;,
+    &#39;UCPnlBOg4_NU9wdhRN-vzECQ&#39;,
+    &#39;UCeKum6mhlVAjUFIW15mVBPg&#39;],
+   &#39;unsubscribedTrailer&#39;: &#39;FsZ3p9gOkpY&#39;,
+   &#39;profileColor&#39;: &#39;#000000&#39;},
+  &#39;image&#39;: {&#39;bannerImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w1060-fcrop64=1,00005a57ffffa5a8-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerMobileImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w640-fcrop64=1,32b75a57cd48a5a8-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerTabletLowImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w1138-fcrop64=1,00005a57ffffa5a8-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerTabletImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w1707-fcrop64=1,00005a57ffffa5a8-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerTabletHdImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w2276-fcrop64=1,00005a57ffffa5a8-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerTabletExtraHdImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w2560-fcrop64=1,00005a57ffffa5a8-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerMobileLowImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w320-fcrop64=1,32b75a57cd48a5a8-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerMobileMediumHdImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w960-fcrop64=1,32b75a57cd48a5a8-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerMobileHdImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w1280-fcrop64=1,32b75a57cd48a5a8-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerMobileExtraHdImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w1440-fcrop64=1,32b75a57cd48a5a8-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerTvImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w2120-fcrop64=1,00000000ffffffff-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerTvLowImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w854-fcrop64=1,00000000ffffffff-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerTvMediumImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w1280-fcrop64=1,00000000ffffffff-nd-c0xffffffff-rj-k-no&#39;,
+   &#39;bannerTvHighImageUrl&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w1920-fcrop64=1,00000000ffffffff-nd-c0xffffffff-rj-k-no&#39;},
+  &#39;hints&#39;: [{&#39;property&#39;: &#39;channel.featured_tab.template.string&#39;,
+    &#39;value&#39;: &#39;Everything&#39;},
+   {&#39;property&#39;: &#39;channel.modules.show_comments.bool&#39;, &#39;value&#39;: &#39;True&#39;},
+   {&#39;property&#39;: &#39;channel.banner.mobile.medium.image.url&#39;,
+    &#39;value&#39;: &#39;https://yt3.ggpht.com/Qfti0QDA7Q-7TtwBK9rDh6JV1C6CBAjUry4983cXQSZMgDx0eghNpPXcFsVZrglxwWIGqmjiqA=w640-fcrop64=1,32b75a57cd48a5a8-nd-c0xffffffff-rj-k-no&#39;}]}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">yt</span><span class="o">.</span><span class="n">get_subscriptions</span><span class="p">(</span><span class="n">channel_id</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[39]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[OrderedDict([(&#39;subscription_title&#39;, &#39;HBOBoxing&#39;),
+              (&#39;subscription_channel_id&#39;, &#39;UCWPQB43yGKEum3eW0P9N_nQ&#39;),
+              (&#39;subscription_kind&#39;, &#39;youtube#channel&#39;),
+              (&#39;subscription_publish_date&#39;,
+               datetime.datetime(2014, 3, 20, 19, 5, 54)),
+              (&#39;collection_date&#39;,
+               datetime.datetime(2018, 10, 8, 11, 54, 45, 192640))]),
+ OrderedDict([(&#39;subscription_title&#39;, &#39;Real Time with Bill Maher&#39;),
+              (&#39;subscription_channel_id&#39;, &#39;UCy6kyFxaMqGtpE3pQTflK8A&#39;),
+              (&#39;subscription_kind&#39;, &#39;youtube#channel&#39;),
+              (&#39;subscription_publish_date&#39;,
+               datetime.datetime(2014, 12, 11, 18, 55, 41)),
+              (&#39;collection_date&#39;,
+               datetime.datetime(2018, 10, 8, 11, 54, 45, 192640))])]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can convert the <code>channel_id</code> into a playlist id to get all the videos ever posted by a channel using a function from the <code>youtube_api_utils</code> in the package.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">youtube_api.youtube_api_utils</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">playlist_id</span> <span class="o">=</span> <span class="n">get_upload_playlist_id</span><span class="p">(</span><span class="n">channel_id</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">uploads_playlist</span><span class="p">)</span>
 </pre></div>
 
@@ -12085,6 +12303,227 @@ Presented on: 2018/10/09</p>
 <pre>UU3XTzVzaHQEd30rQbuvCtTQ
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can now get the videos from this <code>playlist_id</code></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">videos</span> <span class="o">=</span> <span class="n">yt</span><span class="o">.</span><span class="n">get_videos_from_playlist_id</span><span class="p">(</span><span class="n">playlist_id</span><span class="p">)</span>
+<span class="n">videos</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[37]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[OrderedDict([(&#39;publish_date&#39;, datetime.datetime(2018, 10, 8, 6, 30)),
+              (&#39;video_id&#39;, &#39;FsZ3p9gOkpY&#39;),
+              (&#39;channel_id&#39;, &#39;UC3XTzVzaHQEd30rQbuvCtTQ&#39;),
+              (&#39;collection_date&#39;,
+               datetime.datetime(2018, 10, 8, 11, 53, 51, 246426))]),
+ OrderedDict([(&#39;publish_date&#39;, datetime.datetime(2018, 10, 1, 6, 30, 1)),
+              (&#39;video_id&#39;, &#39;opi8X9hQ7q8&#39;),
+              (&#39;channel_id&#39;, &#39;UC3XTzVzaHQEd30rQbuvCtTQ&#39;),
+              (&#39;collection_date&#39;,
+               datetime.datetime(2018, 10, 8, 11, 53, 51, 246426))]),
+ OrderedDict([(&#39;publish_date&#39;, datetime.datetime(2018, 9, 24, 6, 30)),
+              (&#39;video_id&#39;, &#39;OjPYmEZxACM&#39;),
+              (&#39;channel_id&#39;, &#39;UC3XTzVzaHQEd30rQbuvCtTQ&#39;),
+              (&#39;collection_date&#39;,
+               datetime.datetime(2018, 10, 8, 11, 53, 51, 246426))]),
+ OrderedDict([(&#39;publish_date&#39;, datetime.datetime(2018, 9, 10, 6, 30, 2)),
+              (&#39;video_id&#39;, &#39;NpPyLcQ2vdI&#39;),
+              (&#39;channel_id&#39;, &#39;UC3XTzVzaHQEd30rQbuvCtTQ&#39;),
+              (&#39;collection_date&#39;,
+               datetime.datetime(2018, 10, 8, 11, 53, 51, 246426))]),
+ OrderedDict([(&#39;publish_date&#39;, datetime.datetime(2018, 8, 27, 3, 0)),
+              (&#39;video_id&#39;, &#39;2nXYbGmF3_Q&#39;),
+              (&#39;channel_id&#39;, &#39;UC3XTzVzaHQEd30rQbuvCtTQ&#39;),
+              (&#39;collection_date&#39;,
+               datetime.datetime(2018, 10, 8, 11, 53, 51, 246426))])]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">videos</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[48]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>publish_date</th>
+      <th>video_id</th>
+      <th>channel_id</th>
+      <th>collection_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2018-10-08 06:30:00</td>
+      <td>FsZ3p9gOkpY</td>
+      <td>UC3XTzVzaHQEd30rQbuvCtTQ</td>
+      <td>2018-10-08 11:53:51.246426</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018-10-01 06:30:01</td>
+      <td>opi8X9hQ7q8</td>
+      <td>UC3XTzVzaHQEd30rQbuvCtTQ</td>
+      <td>2018-10-08 11:53:51.246426</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From here we can get the full video metadata from the videos</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">video_meta</span> <span class="o">=</span> <span class="n">yt</span><span class="o">.</span><span class="n">get_video_metadata</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">video_id</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">video_meta</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[47]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[OrderedDict([(&#39;video_id&#39;, &#39;FsZ3p9gOkpY&#39;),
+              (&#39;channel_title&#39;, &#39;LastWeekTonight&#39;),
+              (&#39;channel_id&#39;, &#39;UC3XTzVzaHQEd30rQbuvCtTQ&#39;),
+              (&#39;video_publish_date&#39;, datetime.datetime(2018, 10, 8, 6, 30)),
+              (&#39;video_title&#39;,
+               &#39;Brazilian Elections: Last Week Tonight with John Oliver (HBO)&#39;),
+              (&#39;video_description&#39;,
+               &#39;Brazil is about to elect a new president during a turbulent period of political corruption and economic uncertainty. John Oliver urges the people of Brazil not to figuratively fingerbang their democracy.\n\nConnect with Last Week Tonight online...\n \nSubscribe to the Last Week Tonight YouTube channel for more almost news as it almost happens: www.youtube.com/user/LastWeekTonight\n \nFind Last Week Tonight on Facebook like your mom would: http://Facebook.com/LastWeekTonight\n \nFollow us on Twitter for news about jokes and jokes about news: http://Twitter.com/LastWeekTonight\n \nVisit our official site for all that other stuff at once: http://www.hbo.com/lastweektonight&#39;),
+              (&#39;video_category&#39;, &#39;24&#39;),
+              (&#39;video_view_count&#39;, &#39;685736&#39;),
+              (&#39;video_comment_count&#39;, &#39;7312&#39;),
+              (&#39;video_like_count&#39;, &#39;35123&#39;),
+              (&#39;video_dislike_count&#39;, &#39;3367&#39;),
+              (&#39;video_thumbnail&#39;,
+               &#39;https://i.ytimg.com/vi/FsZ3p9gOkpY/hqdefault.jpg&#39;),
+              (&#39;video_tags&#39;,
+               &#39;last week tonight brazilian elections|last week tonight brazil|last week tonight jair bolsonaro|jair bolsonaro|john oliver brazil elections|john oliver brazil|john oliver jair bolsonaro|bolsonaro&#39;),
+              (&#39;collection_date&#39;,
+               datetime.datetime(2018, 10, 8, 12, 11, 13, 954220))]),
+ OrderedDict([(&#39;video_id&#39;, &#39;opi8X9hQ7q8&#39;),
+              (&#39;channel_title&#39;, &#39;LastWeekTonight&#39;),
+              (&#39;channel_id&#39;, &#39;UC3XTzVzaHQEd30rQbuvCtTQ&#39;),
+              (&#39;video_publish_date&#39;, datetime.datetime(2018, 10, 1, 6, 30, 1)),
+              (&#39;video_title&#39;,
+               &#39;Brett Kavanaugh: Last Week Tonight with John Oliver (HBO)&#39;),
+              (&#39;video_description&#39;,
+               &#39;John Oliver discusses the ongoing controversy surrounding Brett Kavanaugh, the sexual assault allegations against him, his Supreme Court nomination, and what that could all mean for the highest (mostly-dog) court in the land.\n\nConnect with Last Week Tonight online...\n \nSubscribe to the Last Week Tonight YouTube channel for more almost news as it almost happens: www.youtube.com/user/LastWeekTonight\n \nFind Last Week Tonight on Facebook like your mom would: http://Facebook.com/LastWeekTonight\n \nFollow us on Twitter for news about jokes and jokes about news: http://Twitter.com/LastWeekTonight\n \nVisit our official site for all that other stuff at once: http://www.hbo.com/lastweektonight&#39;),
+              (&#39;video_category&#39;, &#39;24&#39;),
+              (&#39;video_view_count&#39;, &#39;7150636&#39;),
+              (&#39;video_comment_count&#39;, &#39;32619&#39;),
+              (&#39;video_like_count&#39;, &#39;144533&#39;),
+              (&#39;video_dislike_count&#39;, &#39;23986&#39;),
+              (&#39;video_thumbnail&#39;,
+               &#39;https://i.ytimg.com/vi/opi8X9hQ7q8/hqdefault.jpg&#39;),
+              (&#39;video_tags&#39;,
+               &#39;last week tonight brett kavanaugh|john oliver brett kavanaugh|brett kavanaugh|kavanaugh hearing|kavanaugh&#39;),
+              (&#39;collection_date&#39;,
+               datetime.datetime(2018, 10, 8, 12, 11, 13, 954220))])]</pre>
+</div>
+
 </div>
 
 </div>
